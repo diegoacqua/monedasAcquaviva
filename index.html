@@ -8,8 +8,9 @@
   </head>
   <body>
     <h1>Conversor de monedas</h1>
-    <h2>Las opciones son Dolar, Euro, Yen, Libra Esterlina y Sol</h2>
+    <h2>Las opciones son Dolares, Euros, Yenes, Libras Esterlinas y Soles</h2>
     <form action="" id="form">
+      <label for="cantidad">Ingresa la cantidad de pesos a cambiar</label>
       <input
         type="number"
         name="cantidad"
@@ -17,6 +18,7 @@
         placeholder="Pesos"
         required
       />
+      <label for="nombre">Ingresa la moneda a la que quieras cambiar</label>
       <input
         type="text"
         name="nombre"
@@ -24,9 +26,13 @@
         placeholder="Moneda"
         required
       />
-      <button type="submit" id="btn">Calcular</button>
+      <button type="submit" id="btnSubmit">Calcular</button>
+      <button type="button" id="btn">Mostrar calculos anteriores</button>
     </form>
     <div id="container"></div>
+    <div id="previos">
+      <h3>Calculos previos:</h3>
+    </div>
 
     <script src="app.js"></script>
   </body>
