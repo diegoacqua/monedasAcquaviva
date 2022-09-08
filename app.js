@@ -42,7 +42,12 @@ function conversor(cantidad, moneda) {
         let sol = cantidad * 0.03;
         return imprimir(sol, moneda);
       default:
-        return alert("ingrese una moneda valida");
+        return swal({
+          title: "Error",
+          text: "Ingrese una moneda valida",
+          icon: "error",
+          button: "Continuar",
+        });
     }
   }
 }
@@ -54,7 +59,12 @@ function imprimir(resultado, moneda) {
   calcPrevios.push(new Conversion(resultado, moneda));
   const convertirEnString = JSON.stringify(calcPrevios);
   localStorage.setItem("calcPrevio", convertirEnString);
-  console.log(calcPrevios);
+  swal({
+    title: "Listo",
+    text: "El calculo ya esta hecho",
+    icon: "success",
+    button: "Continuar",
+  });
 }
 
 function imprimirPrev() {
@@ -64,4 +74,9 @@ function imprimirPrev() {
     divPrevios.innerHTML += `<p>${calculo.cantidad} ${calculo.moneda}</p>`;
     divPrevios.append();
   }
+  Toastify({
+    text: "Aqui estan tus calculos previos",
+    duration: 2000,
+    close: true,
+  }).showToast();
 }
