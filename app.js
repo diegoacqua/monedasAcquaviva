@@ -11,6 +11,30 @@ let form = document.getElementById("form");
 let div = document.getElementById("container");
 let divPrevios = document.getElementById("previos");
 let btn = document.getElementById("btn");
+let bit = document.getElementById("bitcoin");
+
+const options = {
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Key": "42a75b61d2mshd0761b726fd01cfp1675dfjsn7ab806549ec9",
+    "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
+  },
+};
+
+fetch(
+  "https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h",
+  options
+)
+  .then((response) => response.json())
+  .then((response) => {
+    console.log(response);
+    let pActual = Number(response.data.coin.price);
+    let pHigh = Number(response.data.coin.allTimeHigh.price);
+    let p = document.createElement("p");
+    p.innerHTML = `El precio actual es de: $${pActual.toFixed()} <br/> Su precio mas alto fue: $${pHigh.toFixed()}`;
+    bit.appendChild(p);
+  })
+  .catch((err) => console.error(err));
 
 form.addEventListener("submit", prueba);
 btn.addEventListener("click", imprimirPrev);
